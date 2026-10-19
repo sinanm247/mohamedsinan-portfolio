@@ -1,0 +1,119 @@
+@use '../../../Styles/variables' as *;
+
+.path {
+  background: $paper;
+  border-top: 1px solid $line;
+}
+
+.path--edu.section {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.path__head {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: 20px 40px;
+  align-items: end;
+  margin-bottom: 32px;
+}
+
+.path__head h2 {
+  font-size: clamp(52px, 6vw, 84px);
+}
+
+.path__head p {
+  color: $muted;
+  max-width: 42ch;
+  padding-bottom: 8px;
+}
+
+.path__list,
+.edu__list {
+  display: grid;
+  gap: 16px;
+}
+
+.path-card,
+.edu__list li {
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 22px;
+  padding: 22px;
+  background: $cream;
+  border: 1px solid $line;
+  border-radius: 16px;
+}
+
+.path-card img,
+.edu__list img {
+  width: 160px;
+  height: 80px;
+  object-fit: contain;
+  background: #050505;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.path-card h3,
+.edu__list h3 {
+  font-family: $font-sans;
+  font-weight: $fw-medium;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 4px 0 6px;
+}
+
+.path-card__dates {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.path-card__org {
+  color: $muted;
+  margin-bottom: 10px;
+}
+
+.path-card ul {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.path-card li {
+  padding-left: 14px;
+  position: relative;
+}
+
+.path-card li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: $ink;
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+}
+
+.edu__note {
+  margin-top: 8px;
+  font-weight: $fw-medium;
+}
+
+@media (max-width: 800px) {
+  .path__head,
+  .path-card,
+  .edu__list li {
+    grid-template-columns: 1fr;
+  }
+
+  .path-card img,
+  .edu__list img {
+    width: 160px;
+    height: 80px;
+  }
+}

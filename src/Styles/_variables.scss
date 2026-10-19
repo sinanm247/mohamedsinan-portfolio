@@ -1,18 +1,32 @@
-// ===========================================================================
-// Media 24x7 — Brand & Design Tokens
-// Import in any component with:  @use '../../Styles/variables' as *;
-// (adjust the relative depth to reach src/Styles)
-// ===========================================================================
+// Personal portfolio tokens.
+// Import with: @use '../../Styles/variables' as *;
 
-// --- Brand colors --------------------------------------------------------
-$primary: #eb2127; // brand red
-$secondary: #676868; // brand grey
+$ink: #f2f2f2;
+$paper: #070707;
+$paper-deep: #141414;
+$cream: #101010;
+$muted: #8f8f8f;
+$line: rgba(255, 255, 255, 0.14);
+$accent: #f2f2f2;
 
-// --- Neutrals ------------------------------------------------------------
-$black: #0a0a0a;
-$dark: #111111;
-$white: #ffffff;
-$light: #f5f5f5;
+$hero: #050505;
+$hero-text: #f4f4f4;
+$hero-muted: rgba(244, 244, 244, 0.68);
+$hero-line: rgba(255, 255, 255, 0.16);
+
+$black: $ink;
+$white: $cream;
+$dark: $hero;
+$light: $paper;
+$primary: $accent;
+$secondary: $muted;
+$tertiary: $hero;
+$text: $ink;
+$text-muted: $muted;
+$heading: $ink;
+$bg: $paper;
+$border: $line;
+
 $grey-100: #f2f2f2;
 $grey-200: #e5e4e7;
 $grey-300: #cbcbcb;
@@ -20,19 +34,8 @@ $grey-400: #9a9a9a;
 $grey-500: $secondary;
 $grey-700: #3a3a3a;
 
-// Loader / surface base color used by AppLoader
-$tertiary: $white;
-
-// --- Semantic ------------------------------------------------------------
-$text: #1a1a1a;
-$text-muted: $secondary;
-$heading: $black;
-$bg: $white;
-$border: $grey-200;
-
-// --- Typography ----------------------------------------------------------
-$font-sans: 'BDO Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-$font-serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+$font-sans: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 $font-heading: $font-sans;
 
 $fw-light: 300;
@@ -41,25 +44,21 @@ $fw-medium: 500;
 $fw-semibold: 600;
 $fw-bold: 700;
 
-// --- Layout --------------------------------------------------------------
-$container-max: 1700px;
-$container-pad: 24px;
-$page-gutter: 50px; // horizontal page padding (hero, navbar, etc.)
+$container-max: 1440px;
+$container-pad: 20px;
+$page-gutter: 48px;
 
-// --- Radius & shadow -----------------------------------------------------
 $radius-xs: 4px;
-$radius-sm: 6px;
-$radius-md: 12px;
-$radius-lg: 20px;
-$shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
-$shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 22px;
+$shadow-sm: 0 8px 24px rgba(20, 19, 17, 0.06);
+$shadow-md: 0 18px 40px rgba(20, 19, 17, 0.1);
 
-// --- Z-index -------------------------------------------------------------
 $z-header: 1000;
 $z-overlay: 5000;
 $z-loader: 9999;
 
-// --- Breakpoints ---------------------------------------------------------
 $bp-sm: 480px;
 $bp-md: 768px;
 $bp-lg: 1024px;

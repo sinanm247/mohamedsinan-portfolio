@@ -1,252 +1,319 @@
-import portfolio1 from '../assets/Portfolio/Portfolio-1.webp';
-import portfolio2 from '../assets/Portfolio/Portfolio-2.mp4';
-import portfolio3 from '../assets/Portfolio/Portfolio-3.webp';
-import portfolio4 from '../assets/Portfolio/Portfolio-4.webp';
+import portraitTall from '../assets/Image/MySelf-1-no-bg.webp';
+import portraitSquare from '../assets/Image/MySelf-2-no-bg.webp';
 
-import svcContentCreation      from '../assets/Services/Content-Creation.webp';
-import svcPerformanceMarketing  from '../assets/Services/Performance-Marketing.webp';
-import svcSocialMedia           from '../assets/Services/Social-Media-Managament.webp';
-import svcSeo                   from '../assets/Services/SEO.webp';
-import svcWebDev                from '../assets/Services/Website-Development.webp';
-import svcProgrammatic          from '../assets/Services/Programatic-Ads.webp';
-import svcGoogleAds             from '../assets/Services/Google-Ads.webp';
+import rncLogo from '../assets/Logo/RNC-Logo.png';
+import dctLogo from '../assets/Logo/DCT-Academy-Logo.png';
+import media247Logo from '../assets/Logo/Media247-Logo.png';
+import wecanLogo from '../assets/Logo/Wecan-Logo.png';
+import ktuLogo from '../assets/Logo/KTU-Logo.png';
+import keralaLogo from '../assets/Logo/Kerala-Board-Logo.png';
 
-import client1 from '../assets/Clients/Logo-1.png';
-import client2 from '../assets/Clients/Logo-2.png';
-import client3 from '../assets/Clients/Logo-3.png';
-import client4 from '../assets/Clients/Logo-4.png';
-import client5 from '../assets/Clients/Logo-5.png';
-import client6 from '../assets/Clients/Logo-6.png';
-import client7 from '../assets/Clients/Logo-7.png';
-import client8 from '../assets/Clients/Logo-8.png';
-import client9 from '../assets/Clients/Logo-9.png';
-import client10 from '../assets/Clients/Logo-10.png';
-import client11 from '../assets/Clients/Logo-11.png';
-import client12 from '../assets/Clients/Logo-12.png';
-import client13 from '../assets/Clients/Logo-13.png';
-import client14 from '../assets/Clients/Logo-14.png';
+import qsports from '../assets/Portfolio/Custom-Dynamic-Website/Q-Sports.webp';
+import samLuxury from '../assets/Portfolio/Custom-Dynamic-Website/Sam-Luxury-Tourism.webp';
+import crunche from '../assets/Portfolio/Custom-E-Commerce/Crunchie-Cravings.webp';
+import elitePaws from '../assets/Portfolio/Custom-React-Websites/123-Elite-Paws.webp';
+import orangeAds from '../assets/Portfolio/Custom-React-Websites/Orange Advertising.webp';
+import tridentOne from '../assets/Portfolio/Custom-React-Websites/Trident-Luxury-1.webp';
+import tridentTwo from '../assets/Portfolio/Custom-React-Websites/Trident-Luxury-2.webp';
+import reactReel from '../assets/Portfolio/Custom-React-Websites/Portfolio-2.mp4';
+import azizi from '../assets/Portfolio/Landing-Pages/Azizi-Landing Page.webp';
+import homeSecurity from '../assets/Portfolio/Landing-Pages/Home-Security-Line.webp';
+import dineOne from '../assets/Portfolio/Saas-Product/Dine-OS-1.webp';
+import dineTwo from '../assets/Portfolio/Saas-Product/Dine-OS-2.webp';
+import biopharma from '../assets/Portfolio/Wordpress-Websites/BioPharma.webp';
+import darAlAjab from '../assets/Portfolio/Wordpress-Websites/Dar-al-Ajab.webp';
+import dotArts from '../assets/Portfolio/Wordpress-Websites/Dot-Arts.webp';
+import elizabeth from '../assets/Portfolio/Wordpress-Websites/Elizabeth-and-Ali-Interios.webp';
+import melty from '../assets/Portfolio/Wordpress-Websites/Melty.webp';
+import moorfield from '../assets/Portfolio/Wordpress-Websites/Moorfield.webp';
+import orla from '../assets/Portfolio/Wordpress-Websites/Orla Properties.webp';
 
-export const SITE_CONTENT = {
-  portfolio: {
-    sectionNum: '02',
-    displayLine1: 'WRK.',
-    displayLine2: "24'",
-    description: 'The work, with the numbers still in it.',
-    cta: 'View All Work',
-    seeAllCount: '04',
-    items: [
-      {
-        id: 'trident-luxury',
-        index: '01',
-        service: 'Website Development',
-        client: 'Trident Luxury',
-        industry: 'Real Estate',
-        src: portfolio1,
-        type: 'image',
-      },
-      {
-        id: 'elite-paws',
-        index: '02',
-        service: 'Website Development',
-        client: 'Elite Paws',
-        industry: 'Hospitality',
-        src: portfolio2,
-        type: 'video',
-      },
-      {
-        id: 'media247-ooh',
-        index: '03',
-        service: 'Social Media Management',
-        client: 'Media247',
-        industry: 'Outdoor Marketing Agency',
-        src: portfolio3,
-        type: 'image',
-      },
-      {
-        id: 'imedia247',
-        index: '04',
-        service: 'Social Media Management',
-        client: 'iMedia247',
-        industry: 'Outdoor Marketing Agency',
-        src: portfolio4,
-        type: 'image',
-      },
-    ],
-  },
+import { CONTACT } from '../Constants/site';
 
-  about: {
-    sectionNum: '01',
-    heading:
-      "A digital agency with an offline advantage and zero patience for campaigns that can't defend their numbers.",
-    rows: [
-      {
-        id: 'strategy',
-        tag: 'Strategy',
-        text: "Diagnosis before prescription. We won't recommend a thing until we know exactly where the money is going and why.",
-      },
-      {
-        id: 'execution',
-        tag: '+Execution',
-        text: 'Paid media, funnels, creative, tracking. All of it running together, all of it pointed at the same outcome.',
-      },
-      {
-        id: 'results',
-        tag: '=Results',
-        stats: [
-          { label: 'Brands Scaled',        value: '100+' },
-          { label: 'Campaign Success Rate', value: '98%'  },
-        ],
-      },
-    ],
-    cta: 'Explore Our Work',
-    clients: [
-      client1, client2, client3, client4,
-      client5, client6, client7, client8,
-      client9, client10, client11, client12,
-      client13, client14,
-    ],
-  },
-
-
-  hero: {
-    headline: 'We Help Brands Scale',
-    subheadline: 'A performance marketing agency with an offline advantage built in.',
-    description:
-      'Our digital marketing agency specializes in creating targeted and effective social, google & programmatic advertising as well as social media strategy & content creation to help our clients reach their maximum online potential.',
-  },
-
-  mission: {
-    heading: 'Our Mission',
-    body: 'Our ultimate mission and drive, is to compose and conduct groundbreaking digital marketing strategies in order to break through your limitations as a company and boost your potential, minimize your risk of failing and in the end increase your turn over.',
-  },
-
-  vision: {
-    heading: 'Our Vision',
-    body: 'Media247 Digital will be a leading force in marketing for all businesses. Our marketing expertise makes us a trusted resource for digital, brand, media, direct marketing, strategy and event marketing, among clients looking to expand and evolve their marketing.',
-  },
-
-  process: {
-    heading: 'Every Smart Step',
-    body: 'Our process begins with a deep dive into client goals during the onboarding phase. We then craft a tailored strategy, develop culturally resonant creatives, and execute campaigns across chosen platforms. Throughout, we closely monitor performance, making real-time adjustments to optimize results. Finally, we analyze the outcomes, providing insights and recommendations for future campaigns.',
-  },
-
-  services: {
-    sectionNum: '03',
-    introBold: 'The full stack of what we offer,',
-    introFade: 'broken down.',
-    list: [
-      {
-        id: 'content-creation',
-        index: '01',
-        title: 'Content Creation',
-        subtitle: 'Creative Strategy',
-        description:
-          "Content that has a reason to exist beyond filling a calendar. We build it around what your audience is actually doing — not simply what the algorithm rewarded last month. If it doesn't connect to a conversion, we'll tell you before we make it.",
-        img: svcContentCreation,
-      },
-      {
-        id: 'performance-marketing',
-        index: '02',
-        title: 'Performance Marketing',
-        subtitle: 'Paid Media & ROI',
-        description:
-          "We buy media with a number in mind — your cost per lead, your ROAS, your payback period. Every campaign launches with a ceiling and a kill date. We don't wait for the budget to run out before making a call.",
-        img: svcPerformanceMarketing,
-      },
-      {
-        id: 'social-media-management',
-        index: '03',
-        title: 'Social Media Management',
-        subtitle: 'Community & Growth',
-        description:
-          'Consistent, considered, and always pointed at something commercial. We manage your presence so it works alongside your paid activity, not independently of it.',
-        img: svcSocialMedia,
-      },
-      {
-        id: 'seo',
-        index: '04',
-        title: 'SEO',
-        subtitle: 'Organic Visibility',
-        description:
-          "The kind of traffic that compounds. We work on what actually moves rankings — technical foundations, content that earns authority, and the search terms your buyers are using when they're ready to act.",
-        img: svcSeo,
-      },
-      {
-        id: 'website-development',
-        index: '05',
-        title: 'Website Development',
-        subtitle: 'Digital Presence',
-        description:
-          "Built to convert, not just to look good at the pitch. Every page we build has a job, and we measure whether it's doing it.",
-        img: svcWebDev,
-      },
-      {
-        id: 'programmatic-ads',
-        index: '06',
-        title: 'Programmatic Ads',
-        subtitle: 'Audience Targeting',
-        description:
-          "Your audience, found across the internet in real time, based on what they actually do — not just what they search. We target the right attention at the right moment, and we're specific about what that costs.",
-        img: svcProgrammatic,
-      },
-      // {
-      //   id: 'google-ads',
-      //   index: '07',
-      //   title: 'Google Ads',
-      //   subtitle: 'Search & Display',
-      //   description:
-      //     'High-intent search, handled properly. We go after the terms that signal a buyer, and we manage bids, copy, and landing pages as one system — not three separate jobs.',
-      //   img: svcGoogleAds,
-      // },
-    ],
-  },
-
-  stats: {
-    sectionNum: '04',
-    label: 'Stats',
-    items: [
-      {
-        stat: '40%',
-        title: 'Lower Cost Per Lead',
-        description:
-          'Up to 40% lower cost per lead when we route to WhatsApp instead of a form.',
-      },
-      {
-        stat: '60-90',
-        unit: 'Days',
-        title: 'Days to Real Results',
-        description:
-          '60–90 days is how long we need to show you a real number, or tell you to walk.',
-      },
-      {
-        stat: '3×',
-        title: 'More Engagement',
-        description:
-          '3× the engagement when content runs bilingual instead of single-language.',
-      },
-      {
-        stat: '1,500+',
-        title: 'Agencies in This Market',
-        description:
-          "1,500+ agencies in this market. We're not trying to look like the other 1,499.",
-      },
-    ],
-  },
-
-  footer: {
-    tagline: "Let's figure out what's working for your brand.",
-    email: 'hello@media247.digital',
-    cta: 'Contact Now',
-    ctaPath: '/contact',
-    wordmarkA: 'MEDIA247',
-    wordmarkB: 'DIGITAL',
-  },
-
-  cta: {
-    headingLeft: 'Scale Your',
-    headingRight: 'Brand.',
-    tagline: 'Let\'s build your digital strategy together.',
-    cta: 'Get In Touch',
-    ctaPath: '/contact',
-  },
+export const PROFILE = {
+  name: 'Mohamed Sinan',
+  role: 'Full-stack web developer',
+  location: CONTACT.location,
+  email: CONTACT.email,
+  phone: CONTACT.phone,
+  phoneHref: CONTACT.phoneHref,
+  whatsapp: CONTACT.whatsapp,
+  portraitTall,
+  portraitSquare,
+  lead:
+    'I build web products with React, Node.js, Express, and MongoDB. The public site, the admin screens, and the API usually ship together.',
 };
+
+export const ORGANIZATIONS = [
+  { id: 'rnc', name: 'Rabbit and Carrot', logo: rncLogo },
+  { id: 'dct', name: 'DCT Academy', logo: dctLogo },
+  { id: 'media247', name: 'Media 247', logo: media247Logo },
+  { id: 'wecan', name: 'weCAN', logo: wecanLogo },
+  { id: 'ktu', name: 'KTU', logo: ktuLogo },
+  { id: 'kerala', name: 'Kerala Board', logo: keralaLogo },
+];
+
+export const EXPERIENCE = [
+  {
+    id: 'rabbit-and-carrot',
+    logo: rncLogo,
+    logoAlt: 'Rabbit and Carrot',
+    role: 'Full-stack web developer',
+    org: 'Rabbit and Carrot LLC',
+    place: 'Dubai, UAE',
+    dates: 'Jul 2023 – Present',
+    summary:
+      'I joined as an intern and was promoted to developer within two months. The role covers the company site and client platforms.',
+    points: [
+      'Rebuilt the company website in React after WordPress, including search setup and tracking pixels for Meta and Google.',
+      'Qsports needed separate dashboards for a super admin, a venue admin, and a member, plus live filtering, so that is what I built.',
+      'Six campaign pages cover services such as 2D and 3D animation and web development. The forms pass leads into a CRM.',
+      'Client pages for TAD and VPFX use a responsive layout, with forms handled through Popuform and EmailJS.',
+      'Interface work on these builds uses Redux, SCSS, Swiper, and Framer Motion.',
+    ],
+  },
+  {
+    id: 'dct-academy',
+    logo: dctLogo,
+    logoAlt: 'DCT Academy',
+    role: 'Full-stack web development intern',
+    org: 'DCT Academy',
+    place: 'Bangalore, India',
+    dates: 'Aug 2023 – Jul 2024',
+    summary:
+      'Project work on the MERN stack, running across the same year as the Dubai role. React for the screens, Express and MongoDB for the data.',
+    points: [
+      'I wired REST endpoints and handled create, read, update, and delete against MongoDB.',
+      'Source lived on Git and GitHub. I checked the APIs in Postman before they were treated as done.',
+    ],
+  },
+];
+
+export const EDUCATION = [
+  {
+    id: 'btech',
+    logo: ktuLogo,
+    logoAlt: 'APJ Abdul Kalam Technological University',
+    program: 'Bachelor of Technology, Computer Science and Engineering',
+    school: 'LBS College of Engineering',
+    board: 'APJ Abdul Kalam Technological University, Kerala, India',
+    dates: 'Aug 2019 – May 2023',
+    note: 'GPA 7.2',
+  },
+  {
+    id: 'higher-secondary',
+    logo: keralaLogo,
+    logoAlt: 'Kerala Board of Public Examinations',
+    program: 'Higher Secondary, Computer Science',
+    school: 'Kerala Board of Public Examinations',
+    board: 'Kerala, India',
+    dates: 'Jul 2017 – Apr 2019',
+  },
+  {
+    id: 'high-school',
+    logo: keralaLogo,
+    logoAlt: 'Kerala Board of Public Examinations',
+    program: 'High School, Computer Science',
+    school: 'Kerala Board of Public Examinations',
+    board: 'Kerala, India',
+    dates: 'Jul 2016 – Apr 2017',
+  },
+];
+
+export const SKILL_GROUPS = [
+  {
+    id: 'languages',
+    title: 'Languages',
+    text: 'JavaScript, including ES6 and later, and TypeScript.',
+  },
+  {
+    id: 'front-end',
+    title: 'Front end',
+    text: 'HTML, CSS, SCSS, React, Redux, and Bootstrap. Client builds have also used Vue, Swiper, Splide, and Framer Motion.',
+  },
+  {
+    id: 'back-end',
+    title: 'Back end and data',
+    text: 'Node.js, Express, MongoDB, and Mongoose. Auth on these projects has used JWT.',
+  },
+  {
+    id: 'practice',
+    title: 'How the work gets shipped',
+    text: 'Git, GitHub, REST APIs, and JSON. I keep VS Code, Postman, and Balsamiq open. Payments and mail on client work have gone through Paymob, Stripe, and EmailJS.',
+  },
+];
+
+export const WORK_CATEGORIES = [
+  { id: 'all', label: 'All' },
+  { id: 'dynamic', label: 'Dynamic websites' },
+  { id: 'react', label: 'Custom React' },
+  { id: 'ecommerce', label: 'E-commerce' },
+  { id: 'saas', label: 'SaaS' },
+  { id: 'landing', label: 'Landing pages' },
+  { id: 'wordpress', label: 'WordPress' },
+];
+
+export const PROJECTS = [
+  {
+    id: 'qsports',
+    title: 'Qsports',
+    category: 'dynamic',
+    wide: true,
+    images: [qsports],
+    summary:
+      'A booking product for clubs, bars, and events, built with React, Node.js, Express, and MongoDB.',
+    points: [
+      'Three sign-in types: super admin, club or bar admin, and member. Each one opens a different dashboard.',
+      'Venues are listed with a location search, and events are created from the admin side.',
+      'Members can register, filter the listings, and book.',
+    ],
+    stack: ['React', 'Node.js', 'Express', 'MongoDB'],
+  },
+  {
+    id: 'sam-luxury-tourism',
+    title: 'SAM Luxury Tourism',
+    category: 'dynamic',
+    wide: true,
+    images: [samLuxury],
+    summary:
+      'A tour site for Dubai and Abu Dhabi with more than 200 activities. Visitors sort the list, filter it, and pay for a booking.',
+    points: [
+      'Activities can be filtered by name, city, and price, and they are grouped into categories.',
+      'The cart checks out with Paymob.',
+      'Enquiry forms send mail through EmailJS. About and Contact are written so they can be found in search.',
+    ],
+    stack: ['React', 'Vue', 'SCSS', 'Swiper', 'Splide', 'Framer Motion', 'Paymob', 'EmailJS'],
+  },
+  {
+    id: 'dine-os',
+    title: 'Dine OS',
+    category: 'saas',
+    images: [dineOne, dineTwo],
+    summary: 'A SaaS product. Both screens are from the same build.',
+    stack: ['SaaS'],
+  },
+  {
+    id: 'crunche-cravings',
+    title: 'Crunchie Cravings',
+    category: 'ecommerce',
+    images: [crunche],
+    summary: 'A custom online shop for Crunchie Cravings, built as its own storefront.',
+    stack: ['E-commerce'],
+  },
+  {
+    id: 'trident-luxury',
+    title: 'Trident Luxury',
+    category: 'react',
+    images: [tridentOne, tridentTwo],
+    summary: 'A React website for Trident Luxury. The second image is another view of the same site.',
+    stack: ['React'],
+  },
+  {
+    id: 'orange-advertising',
+    title: 'Orange Advertising',
+    category: 'react',
+    images: [orangeAds],
+    summary: 'The Orange Advertising website, built in React.',
+    stack: ['React'],
+  },
+  {
+    id: 'elite-paws',
+    title: '123 Elite Paws',
+    category: 'react',
+    images: [elitePaws],
+    video: reactReel,
+    summary: 'A React site for 123 Elite Paws. The recording is a walkthrough of this same build.',
+    stack: ['React'],
+  },
+  {
+    id: 'azizi',
+    title: 'Azizi',
+    category: 'landing',
+    images: [azizi],
+    summary: 'A landing page for Azizi.',
+    stack: ['Landing page'],
+  },
+  {
+    id: 'home-security-line',
+    title: 'Home Security Line',
+    category: 'landing',
+    images: [homeSecurity],
+    summary: 'A landing page for Home Security Line.',
+    stack: ['Landing page'],
+  },
+  {
+    id: 'biopharma',
+    title: 'BioPharma',
+    category: 'wordpress',
+    images: [biopharma],
+    summary: 'BioPharma’s public site, built in WordPress.',
+    stack: ['WordPress'],
+  },
+  {
+    id: 'dar-al-ajab',
+    title: 'Dar al Ajab',
+    category: 'wordpress',
+    images: [darAlAjab],
+    summary: 'Dar al Ajab’s website, delivered on WordPress.',
+    stack: ['WordPress'],
+  },
+  {
+    id: 'dot-arts',
+    title: 'Dot Arts',
+    category: 'wordpress',
+    images: [dotArts],
+    summary: 'Dot Arts, set up as a WordPress site.',
+    stack: ['WordPress'],
+  },
+  {
+    id: 'elizabeth-ali',
+    title: 'Elizabeth and Ali Interiors',
+    category: 'wordpress',
+    images: [elizabeth],
+    summary: 'The website for Elizabeth and Ali Interiors.',
+    stack: ['WordPress'],
+  },
+  {
+    id: 'melty',
+    title: 'Melty',
+    category: 'wordpress',
+    images: [melty],
+    summary: 'Melty’s WordPress website.',
+    stack: ['WordPress'],
+  },
+  {
+    id: 'moorfield',
+    title: 'Moorfield',
+    category: 'wordpress',
+    images: [moorfield],
+    summary: 'Moorfield, built on WordPress.',
+    stack: ['WordPress'],
+  },
+  {
+    id: 'orla-properties',
+    title: 'Orla Properties',
+    category: 'wordpress',
+    images: [orla],
+    summary: 'Orla Properties, a WordPress site.',
+    stack: ['WordPress'],
+  },
+];
+
+export const FEATURED_IDS = [
+  'dine-os',
+  'crunche-cravings',
+  'elite-paws',
+  'home-security-line',
+  'dot-arts',
+  'elizabeth-ali',
+];
+
+export const FEATURED_PROJECTS = FEATURED_IDS.map((id) =>
+  PROJECTS.find((project) => project.id === id),
+).filter(Boolean);
+
+export const SEE_ALL_IMAGE = orangeAds;
+
+export function categoryLabel(id) {
+  return WORK_CATEGORIES.find((item) => item.id === id)?.label ?? id;
+}

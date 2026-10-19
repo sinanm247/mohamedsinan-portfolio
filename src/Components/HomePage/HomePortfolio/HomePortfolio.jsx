@@ -1,103 +1,53 @@
-import { useEffect, useRef } from 'react';
-import { useSectionTheme } from '../../../Context/SectionThemeContext';
-import { SITE_CONTENT } from '../../../Datasets/siteContent';
+import { useEffect, useId, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FEATURED_PROJECTS, PROJECTS, SEE_ALL_IMAGE, categoryLabel } from '../../../Datasets/siteContent';
 import './HomePortfolio.scss';
 
-import portfolioAll from '../../../assets/Portfolio/Portfolio-All.webp';
-
-const PORTFOLIO_THEME = {
-  bgStart: '#ffffff',
-  bgEnd:   '#f5f5f5',
-  text:    '#1a1a1a',
-  heading: '#0a0a0a',
-};
-
-const { portfolio } = SITE_CONTENT;
-
-function PortfolioMedia({ item }) {
-  if (item.type === 'video') {
-    return (
-      <video
-        className="portfolio-item__media"
-        src={item.src}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-label={`${item.service} — ${item.client}`}
-      />
-    );
-  }
-  return (
-    <img
-      className="portfolio-item__media"
-      src={item.src}
-      alt={`${item.service} for ${item.client}`}
-      loading="lazy"
-      decoding="async"
-    />
-  );
-}
+const STICKY_TOPS = [72, 88, 104, 120, 136, 152];
 
 export default function HomePortfolio() {
   const sectionRef = useRef(null);
-  const { setSectionTheme } = useSectionTheme();
+  const [activeId, setActiveId] = useState(null);
+  const titleId = useId();
+  const year = new Date().getFullYear();
+  const visible = FEATURED_PROJECTS;
+  const active = PROJECTS.find((project) => project.id === activeId) ?? null;
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return undefined;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setSectionTheme(PORTFOLIO_THEME);
-      },
-      { threshold: 0.2 },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, [setSectionTheme]);
-
-  // Scroll-driven scale: cards shrink continuously as the next card scrolls over them
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return undefined;
-
-    const STICKY_TOPS = [60, 80, 100, 120];
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const narrow = window.matchMedia('(max-width: 768px)');
+    if (reduced) return undefined;
 
     const onScroll = () => {
+      if (narrow.matches) return;
       const items = [...section.querySelectorAll('.home-portfolio__item')];
       const vh = window.innerHeight;
-
       const scrollIntoSection = Math.max(0, window.scrollY - section.offsetTop);
       const sectionProgress = Math.min(1, scrollIntoSection / section.offsetHeight);
 
-      items.forEach((item, i) => {
+      items.forEach((item, index) => {
         const rect = item.getBoundingClientRect();
-        const myTop = STICKY_TOPS[i] ?? 60 + i * 20;
-
+        const myTop = STICKY_TOPS[Math.min(index, STICKY_TOPS.length - 1)];
         if (rect.top > myTop) {
           item.style.transform = '';
           return;
         }
 
         let scale = 1;
-
-        items.slice(i + 1).forEach((next, offset) => {
-          const j = i + 1 + offset;
-          const nextStickyTop = STICKY_TOPS[j] ?? 60 + j * 20;
+        items.slice(index + 1).forEach((next, offset) => {
+          const nextIndex = index + 1 + offset;
+          const nextTop = STICKY_TOPS[Math.min(nextIndex, STICKY_TOPS.length - 1)];
           const nextRect = next.getBoundingClientRect();
-          const progress = Math.min(1, Math.max(0,
-            (vh - nextRect.top) / (vh - nextStickyTop),
-          ));
-          scale -= progress * 0.04;
+          const progress = Math.min(1, Math.max(0, (vh - nextRect.top) / (vh - nextTop)));
+          scale -= progress * 0.035;
         });
 
-        const depthFromFront = items.length - 1 - i;
-        scale -= sectionProgress * depthFromFront * 0.02;
-
-        item.style.transform = `scale(${Math.max(0.78, scale).toFixed(3)})`;
+        const depthFromFront = items.length - 1 - index;
+        scale -= sectionProgress * depthFromFront * 0.012;
+        item.style.transform = `scale(${Math.max(0.82, scale).toFixed(3)})`;
       });
     };
 
@@ -106,7 +56,19 @@ export default function HomePortfolio() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const firstImage = portfolio.items.find((i) => i.type === 'image');
+  useEffect(() => {
+    if (!active) return undefined;
+    const onKey = (event) => {
+      if (event.key === 'Escape') setActiveId(null);
+    };
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [active]);
 
   return (
     <section
@@ -115,77 +77,117 @@ export default function HomePortfolio() {
       className="home-portfolio"
       aria-labelledby="portfolio-heading"
     >
-      {/* ── Section strip ──────────────────────────────────────────────── */}
       <div className="home-portfolio__strip">
         <span className="home-portfolio__strip-index">
           <span className="home-portfolio__strip-dot" aria-hidden="true" />
-          ({portfolio.sectionNum})
+          (02)
         </span>
         <span className="home-portfolio__strip-label">(Portfolio)</span>
-        <span className="home-portfolio__strip-copy">© {new Date().getFullYear()}</span>
+        <span className="home-portfolio__strip-copy">© {year}</span>
       </div>
 
-      {/* ── Body: sidebar | list | see-all ─────────────────────────────── */}
       <div className="home-portfolio__body">
-
-        {/* Sticky left sidebar */}
         <aside className="home-portfolio__sidebar" aria-label="Portfolio summary">
           <div className="home-portfolio__display" aria-hidden="true">
-            <span className="home-portfolio__display-line1">{portfolio.displayLine1}</span>
-            <span className="home-portfolio__display-line2">{portfolio.displayLine2}</span>
+            <span>WRK.</span>
+            <span>26'</span>
           </div>
-          {portfolio.description && (
-            <p className="home-portfolio__description">{portfolio.description}</p>
-          )}
-          <a href="/work" className="home-portfolio__cta">
-            <span className="home-portfolio__cta-text">{portfolio.cta}</span>
-            <span className="home-portfolio__cta-arrow" aria-hidden="true">↗</span>
-          </a>
+          <p className="home-portfolio__description">
+            Six projects from the full set. The rest are on the portfolio page.
+          </p>
+          <Link to="/portfolio" className="home-portfolio__cta">
+            <span>View all work</span>
+            <span aria-hidden="true">↗</span>
+          </Link>
         </aside>
 
-        {/* Portfolio items list */}
         <div className="home-portfolio__list" id="portfolio-heading">
-          {portfolio.items.map((item) => (
-            <article key={item.id} className="home-portfolio__item">
-              <div className="portfolio-item__media-wrap">
-                <PortfolioMedia item={item} />
-              </div>
-              <div className="portfolio-item__meta">
-                <span className="portfolio-item__index">{item.index}</span>
-                <div className="portfolio-item__info">
-                  <span className="portfolio-item__service">{item.service}</span>
-                  <span className="portfolio-item__client">
-                    {item.client}
-                    <em className="portfolio-item__industry"> — {item.industry}</em>
+          {visible.map((project, index) => (
+            <article
+              key={project.id}
+              className="home-portfolio__item"
+              style={{
+                top: `${STICKY_TOPS[Math.min(index, STICKY_TOPS.length - 1)]}px`,
+                zIndex: index + 1,
+              }}
+            >
+              <button type="button" className="portfolio-item" onClick={() => setActiveId(project.id)}>
+                <span className="portfolio-item__media-wrap">
+                  {project.images?.[0] ? (
+                    <img
+                      className="portfolio-item__media"
+                      src={project.images[0]}
+                      alt=""
+                      width="1920"
+                      height="1080"
+                      loading={index < 2 ? 'eager' : 'lazy'}
+                    />
+                  ) : (
+                    <span className="portfolio-item__play">Play recording</span>
+                  )}
+                </span>
+                <span className="portfolio-item__meta">
+                  <span className="portfolio-item__index">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="portfolio-item__info">
+                    <span className="portfolio-item__service">{project.title}</span>
+                    <span className="portfolio-item__client">
+                      {categoryLabel(project.category)}
+                    </span>
                   </span>
-                </div>
-                <span className="portfolio-item__year">© {new Date().getFullYear()}</span>
-              </div>
+                  <span className="portfolio-item__year">© {year}</span>
+                </span>
+              </button>
             </article>
           ))}
         </div>
 
-        {/* See all card */}
-        {portfolioAll && (
-          <aside className="home-portfolio__see-all" aria-label="View all portfolio work">
-            <a href="/work" className="home-portfolio__see-all-link">
-              <div className="home-portfolio__see-all-thumb">
-                <img
-                  src={portfolioAll}
-                  alt=""
-                  className="home-portfolio__see-all-img"
-                  aria-hidden="true"
-                />
-              </div>
-              <div className="home-portfolio__see-all-label">
-                <span>See all</span>
-                <strong>({portfolio.seeAllCount})</strong>
-              </div>
-            </a>
-          </aside>
-        )}
-
+        <aside className="home-portfolio__see-all">
+          <Link to="/portfolio" className="home-portfolio__see-all-link">
+            <span className="home-portfolio__see-all-thumb">
+              <img src={SEE_ALL_IMAGE} alt="" />
+            </span>
+            <span className="home-portfolio__see-all-label">
+              <span>See all</span>
+              <strong>({String(PROJECTS.length).padStart(2, '0')})</strong>
+            </span>
+          </Link>
+        </aside>
       </div>
+
+      {active && (
+        <div className="project-layer" onClick={() => setActiveId(null)}>
+          <article
+            className="project-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button type="button" className="project-dialog__close" onClick={() => setActiveId(null)}>
+              Close
+            </button>
+            <p className="project-dialog__cat">{categoryLabel(active.category)}</p>
+            <h3 id={titleId}>{active.title}</h3>
+            <p>{active.summary}</p>
+            {active.points?.length > 0 && (
+              <ul>
+                {active.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            )}
+            {active.stack?.length > 0 && (
+              <p className="project-dialog__stack">{active.stack.join(' · ')}</p>
+            )}
+            <div className="project-dialog__media">
+              {active.images?.map((src) => (
+                <img key={src} src={src} alt={`${active.title} screenshot`} />
+              ))}
+              {active.video && <video src={active.video} controls playsInline preload="metadata" />}
+            </div>
+          </article>
+        </div>
+      )}
     </section>
   );
 }

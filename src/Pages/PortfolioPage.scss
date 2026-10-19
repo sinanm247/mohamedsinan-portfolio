@@ -1,0 +1,128 @@
+@use '../Styles/variables' as *;
+
+.portfolio-page {
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 48px) 0 88px;
+  background: $paper;
+  color: $ink;
+}
+
+.portfolio-page__kicker {
+  color: $muted;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.portfolio-page__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 10px 0 28px;
+}
+
+.portfolio-page h1 {
+  font-size: clamp(48px, 7vw, 88px);
+}
+
+.portfolio-page__back {
+  padding-bottom: 4px;
+  border-bottom: 1px solid $ink;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portfolio-page__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-bottom: 36px;
+}
+
+.portfolio-page__filters button {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  color: $muted;
+  font-size: 13px;
+}
+
+.portfolio-page__filters button span {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.portfolio-page__filters button[aria-pressed='true'] {
+  color: $ink;
+  border-bottom-color: $ink;
+}
+
+.portfolio-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px 20px;
+}
+
+.portfolio-card button {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  color: inherit;
+  text-align: left;
+}
+
+.portfolio-card__media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #101010;
+}
+
+.portfolio-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.portfolio-card button:hover img {
+  transform: scale(1.03);
+}
+
+.portfolio-card__play {
+  color: $muted;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portfolio-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 15px;
+}
+
+.portfolio-card__meta span:last-child {
+  color: $muted;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .portfolio-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-page__head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
